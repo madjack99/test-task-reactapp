@@ -1,6 +1,7 @@
 .my-sidenav a {
     display: block;
     padding: 10px;
+    font-size: 3vw;
 }
 
 .my-sidenav a:hover {

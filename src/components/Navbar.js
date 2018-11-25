@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Sidenav from './Sidenav'
 import './navbar.css'
 
 class Navbar extends Component {
