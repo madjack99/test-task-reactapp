@@ -1,0 +1,8 @@
+.my-sidenav a {
+    display: block;
+    padding: 10px;
+}
+
+.my-sidenav a:hover {
+    background-color:#303f9f;
+}
