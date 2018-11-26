@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import './navbar.css'
 
 class Navbar extends Component {
@@ -13,12 +14,22 @@ class Navbar extends Component {
         })
     }
 
+    getLinks = () => {
+        return (
+            <div>
+                <li><NavLink to="/">Home</NavLink></li>
+                <li><NavLink to="/about">About</NavLink></li>
+                <li><NavLink to="/superuser">Superuser</NavLink></li>
+                <li><NavLink to="/signin">Sign in</NavLink></li>
+                <li><NavLink to="/signup">Sign up</NavLink></li>
+            </div>
+        )
+    }
+
     getSidenav = () => {
         return (
             <ul className="my-sidenav">
-                <li><a href="#" className="white-text">Home</a></li>
-                <li><a href="#" className="white-text">About</a></li>
-                <li><a href="#" className="white-text">Superuser</a></li>
+                {this.getLinks()}
             </ul>
         )
     }
@@ -32,9 +43,7 @@ class Navbar extends Component {
                             <li><a href="#" onClick={this.handleClick}><i className="material-icons">menu</i></a></li>
                         </ul>
                         <ul className="hide-on-med-and-down right">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Superuser</a></li>
+                            {this.getLinks()}
                         </ul>
                     </div>
                 </nav>
