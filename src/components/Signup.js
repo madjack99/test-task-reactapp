@@ -15,9 +15,10 @@ export class Signup extends Component {
 
 	render() {
 		console.log(this.state)
+		console.log(this.props)
 		return (
 			<div className="container">
-				<form onSubmit={this.handleSubmin}>
+				<form onSubmit={this.handleSubmit}>
 					<h3>Sign up</h3>
 					<div className="input-field">
 						<label htmlFor="userName">You name</label>
