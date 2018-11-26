@@ -5,7 +5,7 @@ const initState = {
 const authReducer = (state = initState, action) => {
     switch(action.type) {
         case 'SIGN_UP':
-            console.log('signing up')
+            console.log('signing up', state)
             return ({
                 users: [...state.users, action.user]
             })

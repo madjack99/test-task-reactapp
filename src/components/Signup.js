@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { signUp } from '../store/actions/signUp'
+import { connect } from 'react-redux'
 
 export class Signup extends Component {
 
@@ -13,9 +15,13 @@ export class Signup extends Component {
 		})
 	}
 
+	handleSubmit = (e) => {
+		e.preventDefault()
+		this.props.signUp(this.state)
+		this.props.history.push('/')
+	}
+
 	render() {
-		console.log(this.state)
-		console.log(this.props)
 		return (
 			<div className="container">
 				<form onSubmit={this.handleSubmit}>
@@ -37,4 +43,10 @@ export class Signup extends Component {
 	}
 }
 
-export default Signup
+const mapDispatchToProps = (dispatch) => {
+	return ({
+		signUp: (user) => dispatch(signUp(user))
+	})
+}
+
+export default connect(null, mapDispatchToProps)(Signup)
