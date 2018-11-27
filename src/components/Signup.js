@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { signUp } from '../store/actions/signUp'
+import { signUp } from '../store/actions/authActions'
 import { connect } from 'react-redux'
 
 export class Signup extends Component {

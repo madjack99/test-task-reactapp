@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import './navbar.css'
+import { logOut } from '../store/actions/authActions'
 
 class Navbar extends Component {
 
@@ -15,13 +17,20 @@ class Navbar extends Component {
     }
 
     getLinks = () => {
+        const signedInLinks = [
+            <li><NavLink to="/" onClick={this.handleClick}>Home</NavLink></li>,
+            <li><NavLink to="/about" onClick={this.handleClick}>About</NavLink></li>,
+            <li><NavLink to="/superuser" onClick={this.handleClick}>Superuser</NavLink></li>,
+            <li><Link to="/" onClick={this.props.logOut}>Log Out</Link></li>
+        ]
+
+        const signedOutLinks = [
+            <li><NavLink to="/signin" onClick={this.handleClick}>Sign in</NavLink></li>,
+            <li><NavLink to="/signup" onClick={this.handleClick}>Sign up</NavLink></li>
+        ]
         return (
             <div>
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/about">About</NavLink></li>
-                <li><NavLink to="/superuser">Superuser</NavLink></li>
-                <li><NavLink to="/signin">Sign in</NavLink></li>
-                <li><NavLink to="/signup">Sign up</NavLink></li>
+                { this.props.activeUser ? signedInLinks : signedOutLinks }
             </div>
         )
     }
@@ -57,4 +66,16 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar
+const mapStateToProps = (state) => {
+    return({
+        activeUser: state.auth.activeUser
+    })
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return({
+        logOut: () => dispatch(logOut())
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

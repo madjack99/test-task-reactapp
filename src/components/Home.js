@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 
 class Home extends Component {
 	render() {
-		console.log(this.props.users)
+		console.log('signed up users =>', this.props.users) 
+		console.log('active user =>', this.props.activeUser)
 		return (
 			<div>
 				<h2>Home page</h2>
@@ -15,7 +16,8 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
 	return({
-		users: state.auth.users
+		users: state.auth.users,
+		activeUser: state.auth.activeUser
 	})
 }
 
