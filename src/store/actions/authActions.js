@@ -10,3 +10,10 @@ export const logOut = () => {
         type: "LOG_OUT"
     }
 }
+
+export const signIn = (user) => {
+    return {
+        type: "SIGN_IN",
+        user
+    }
+}

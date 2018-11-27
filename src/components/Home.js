@@ -5,6 +5,7 @@ class Home extends Component {
 	render() {
 		console.log('signed up users =>', this.props.users) 
 		console.log('active user =>', this.props.activeUser)
+		console.log(this.props)
 		return (
 			<div>
 				<h2>Home page</h2>
