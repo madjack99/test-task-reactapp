@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './navbar.css'
 import { logOut } from '../store/actions/authActions'
+import { listOfSuperusers } from '../constants'
 
 class Navbar extends Component {
 
@@ -17,11 +18,23 @@ class Navbar extends Component {
     }
 
     getLinks = () => {
+        const activeUser = this.props.activeUser
+        const superUser = activeUser ? listOfSuperusers.includes(this.props.activeUser.userName) : false
         const signedInLinks = [
+            activeUser ? (
+                <li className="red-text">{this.props.activeUser.userName} is logged in</li>
+            ) : (
+                <li className="red-text">Nobody is logged in</li>
+            ),
+
             <li><NavLink to="/" onClick={this.handleClick}>Home</NavLink></li>,
             <li><NavLink to="/about" onClick={this.handleClick}>About</NavLink></li>,
-            <li><NavLink to="/superuser" onClick={this.handleClick}>Superuser</NavLink></li>,
-            <li><Link to="/" onClick={this.props.logOut}>Log Out</Link></li>
+
+            superUser ? (
+                <li><NavLink to="/superuser" onClick={this.handleClick}>Superuser</NavLink></li>
+            ) : null,
+
+            <li><Link to="/signin" onClick={this.props.logOut}>Log Out</Link></li>
         ]
 
         const signedOutLinks = [
