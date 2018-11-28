@@ -8,3 +8,7 @@
 .my-sidenav a:hover {
     background-color:#303f9f;
 }
+
+.my-dropdown-menu {
+    position: absolute;
+}

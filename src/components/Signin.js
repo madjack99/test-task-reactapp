@@ -22,7 +22,7 @@ export class SignIn extends Component {
             this.props.signInError ? (
                 this.props.history.push("/signin")
             ) : (
-                this.props.history.push('/')
+                this.props.history.push('/home')
             )
         }, 1000)
 	}
@@ -30,8 +30,10 @@ export class SignIn extends Component {
 	render() {
         console.log("Sign in error", this.props.signInError)
 		return (
-			<div className="container">
-				<form onSubmit={this.handleSubmit}>
+		<div className="row">
+			<div className="col s9 offset-s3">
+				<div className="container">
+                <form onSubmit={this.handleSubmit}>
 					<h3>Sign In</h3>
 					<div className="input-field">
 						<label htmlFor="userName">You name</label>
@@ -48,7 +50,9 @@ export class SignIn extends Component {
                 { this.props.signInError ? (
                     <div className="red-text">{this.props.signInError}</div>
                 ) : null }
+				</div>
 			</div>
+		</div>
 		)
 	}
 }
@@ -66,3 +70,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
+
+
